@@ -1,0 +1,68 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiReader.Application", "MultiReader.Application\MultiReader.Application.csproj", "{44C1614B-4882-40E9-B5A4-0CE871F9A955}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiReader.Epub", "MultiReader.Epub\MultiReader.Epub.csproj", "{FB2F928F-4830-4283-9D4F-7B481D64EA02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpEpub", "Lib\SharpEpub\SharpEpub.csproj", "{8F73F5E4-A96E-45CF-B552-1BAA17085AF3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{6B63E3DF-C0B5-4E8B-B773-4FC722E85217}"
+	ProjectSection(SolutionItems) = preProject
+		Lib\DotNetEpub.dll = Lib\DotNetEpub.dll
+		Lib\eBdb.EpubReader.dll = Lib\eBdb.EpubReader.dll
+		Lib\Ionic.Zip.Reduced.dll = Lib\Ionic.Zip.Reduced.dll
+		Lib\itextsharp.dll = Lib\itextsharp.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharpEpub", "SharpEpub", "{91D4A03E-7EA2-4AF8-9020-6F3D815919A2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{44C1614B-4882-40E9-B5A4-0CE871F9A955}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{44C1614B-4882-40E9-B5A4-0CE871F9A955}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{44C1614B-4882-40E9-B5A4-0CE871F9A955}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{44C1614B-4882-40E9-B5A4-0CE871F9A955}.Debug|x86.ActiveCfg = Debug|x86
+		{44C1614B-4882-40E9-B5A4-0CE871F9A955}.Debug|x86.Build.0 = Debug|x86
+		{44C1614B-4882-40E9-B5A4-0CE871F9A955}.Release|Any CPU.ActiveCfg = Release|x86
+		{44C1614B-4882-40E9-B5A4-0CE871F9A955}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{44C1614B-4882-40E9-B5A4-0CE871F9A955}.Release|Mixed Platforms.Build.0 = Release|x86
+		{44C1614B-4882-40E9-B5A4-0CE871F9A955}.Release|x86.ActiveCfg = Release|x86
+		{44C1614B-4882-40E9-B5A4-0CE871F9A955}.Release|x86.Build.0 = Release|x86
+		{FB2F928F-4830-4283-9D4F-7B481D64EA02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB2F928F-4830-4283-9D4F-7B481D64EA02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB2F928F-4830-4283-9D4F-7B481D64EA02}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{FB2F928F-4830-4283-9D4F-7B481D64EA02}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{FB2F928F-4830-4283-9D4F-7B481D64EA02}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FB2F928F-4830-4283-9D4F-7B481D64EA02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB2F928F-4830-4283-9D4F-7B481D64EA02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB2F928F-4830-4283-9D4F-7B481D64EA02}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{FB2F928F-4830-4283-9D4F-7B481D64EA02}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{FB2F928F-4830-4283-9D4F-7B481D64EA02}.Release|x86.ActiveCfg = Release|Any CPU
+		{8F73F5E4-A96E-45CF-B552-1BAA17085AF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F73F5E4-A96E-45CF-B552-1BAA17085AF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F73F5E4-A96E-45CF-B552-1BAA17085AF3}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{8F73F5E4-A96E-45CF-B552-1BAA17085AF3}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{8F73F5E4-A96E-45CF-B552-1BAA17085AF3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8F73F5E4-A96E-45CF-B552-1BAA17085AF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F73F5E4-A96E-45CF-B552-1BAA17085AF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F73F5E4-A96E-45CF-B552-1BAA17085AF3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{8F73F5E4-A96E-45CF-B552-1BAA17085AF3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{8F73F5E4-A96E-45CF-B552-1BAA17085AF3}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{91D4A03E-7EA2-4AF8-9020-6F3D815919A2} = {6B63E3DF-C0B5-4E8B-B773-4FC722E85217}
+		{8F73F5E4-A96E-45CF-B552-1BAA17085AF3} = {91D4A03E-7EA2-4AF8-9020-6F3D815919A2}
+	EndGlobalSection
+EndGlobal

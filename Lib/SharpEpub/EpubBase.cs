@@ -7,6 +7,7 @@ using SharpEpub.XmlBuilder;
 namespace SharpEpub
 {
 	using Ionic.Zlib;
+    using MultiReader.SharpEpub;
 
 	public abstract class EpubBase
 	{

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Ionic.Zip;
+using MultiReader.SharpEpub;
 
 namespace SharpEpub
 {
@@ -24,13 +25,13 @@ namespace SharpEpub
 		
 		public static IEnumerable<ZipEntry> GetContentFiles(this ZipFile file, string contentDirectory)
 		{
-			string[] contentPatterns = Resources.ContentPatterns.Split(new[] {';'}, StringSplitOptions.RemoveEmptyEntries);
+            string[] contentPatterns = Resources.ContentPatterns.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
 			return contentPatterns.SelectMany(pattern=>file.SelectEntries(pattern, contentDirectory));
 		}
 
 		public static IEnumerable<ZipEntry> GetImageFiles(this ZipFile file, string imageDirectory)
 		{
-			string[] imagePatterns = Resources.ImagePatterns.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] imagePatterns = Resources.ImagePatterns.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
 			return imagePatterns.SelectMany(pattern => file.SelectEntries(pattern, imageDirectory));
 		}
 

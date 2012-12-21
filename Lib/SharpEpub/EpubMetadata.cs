@@ -5,6 +5,7 @@ using System.Xml;
 using Ionic.Zip;
 using SharpEpub.XmlBuilder;
 using XmlElement = SharpEpub.XmlBuilder.XmlElement;
+using MultiReader.SharpEpub;
 
 namespace SharpEpub
 {

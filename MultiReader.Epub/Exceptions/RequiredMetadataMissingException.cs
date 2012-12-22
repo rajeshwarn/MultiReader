@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Epub.Exceptions
+namespace MultiReader.Epub.Exceptions
 {
     public class RequiredMetadataMissingException : Exception
     {

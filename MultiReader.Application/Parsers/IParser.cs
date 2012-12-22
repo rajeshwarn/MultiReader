@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
-using MultiReader.Files;
+using MultiReader.Application.Files;
 
-namespace MultiReader.Parsers
+namespace MultiReader.Application.Parsers
 {
     public interface IParser
     {

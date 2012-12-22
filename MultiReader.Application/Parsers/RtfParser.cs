@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using MultiReader.Files;
+using MultiReader.Application.Files;
 using System.IO;
 
-namespace MultiReader.Parsers
+namespace MultiReader.Application.Parsers
 {
     class RtfParser : IParser
     {

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
-using MultiReader.Parsers;
-using MultiReader.Files;
+using MultiReader.Application.Parsers;
+using MultiReader.Application.Files;
 using Microsoft.Win32;
 using Microsoft.Office.Interop.Word;
 using Word = Microsoft.Office.Interop.Word;
@@ -12,7 +12,7 @@ using System.Xml;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-namespace MultiReader.Parsers
+namespace MultiReader.Application.Parsers
 {
     class DocParser : IParser
     {

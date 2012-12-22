@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Ionic.Zip;
-using Epub.Exceptions;
+using MultiReader.Epub.Exceptions;
 using System.IO;
 
-namespace Epub
+namespace MultiReader.Epub
 {
     public class EpubFile
     {

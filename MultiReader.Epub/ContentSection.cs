@@ -5,7 +5,7 @@ using System.Text;
 using Ionic.Zip;
 using System.IO;
 
-namespace Epub
+namespace MultiReader.Epub
 {
     public class ContentSection
     {

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
-using MultiReader.Parsers;
-using MultiReader.Files;
+using MultiReader.Application.Parsers;
+using MultiReader.Application.Files;
 using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.parser;
 using iTextSharp.text;
 
-namespace MultiReader.Parsers
+namespace MultiReader.Application.Parsers
 {
     class PdfParser : IParser
     {

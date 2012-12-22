@@ -16,8 +16,8 @@ using System.Xml;
 //using iTextSharp.text.pdf;
 //using iTextSharp.text.pdf.parser;
 //using eBdb.EpubReader;
-using MultiReader.Parsers;
-using MultiReader.Files;
+using MultiReader.Application.Parsers;
+using MultiReader.Application.Files;
 
 namespace MultiReader
 {

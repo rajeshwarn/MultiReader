@@ -5,10 +5,10 @@ using System.Text;
 using Ionic.Zip;
 using System.IO;
 using System.Xml.Linq;
-using Epub.Xml;
-using Epub.Exceptions;
+using MultiReader.Epub.Xml;
+using MultiReader.Epub.Exceptions;
 
-namespace Epub
+namespace MultiReader.Epub
 {
     class OpfMetadataFile
     {

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
-using MultiReader.Files;
-using MultiReader.Parsers;
+using MultiReader.Application.Files;
+using MultiReader.Application.Parsers;
 using eBdb.EpubReader;
 
-namespace MultiReader
+namespace MultiReader.Application.Parsers
 {
     class EpubParser : IParser
     {

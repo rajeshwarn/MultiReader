@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Epub;
 
-namespace MultiReader.Parsers
+namespace MultiReader.Application.Parsers
 {
     class Class1
     {
@@ -15,7 +16,7 @@ namespace MultiReader.Parsers
         public void Cosnowego()
         {
         
-            var epub = new Epub.Document();
+            var epub = new Document();
 
             // set metadata
             epub.AddAuthor("Jerome K. Jerome");

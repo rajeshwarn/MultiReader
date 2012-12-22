@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 
-namespace Epub.Xml
+namespace MultiReader.Epub.Xml
 {
     public static class XmlHelper
     {

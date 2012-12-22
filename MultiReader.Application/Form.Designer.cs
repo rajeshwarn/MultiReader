@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,22 +40,22 @@
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFD = new System.Windows.Forms.OpenFileDialog();
+            this.ofd = new System.Windows.Forms.OpenFileDialog();
             this.saveFD = new System.Windows.Forms.SaveFileDialog();
             this.label1 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.tbFileContent = new System.Windows.Forms.RichTextBox();
             this.authorLabel = new System.Windows.Forms.Label();
-            this.authorTextBox = new System.Windows.Forms.TextBox();
+            this.tbAuthor = new System.Windows.Forms.TextBox();
             this.titleLabel = new System.Windows.Forms.Label();
-            this.titleTextBox = new System.Windows.Forms.TextBox();
+            this.tbTitle = new System.Windows.Forms.TextBox();
             this.translatorLabel = new System.Windows.Forms.Label();
-            this.translatorTextBox = new System.Windows.Forms.TextBox();
-            this.publisherTextBox = new System.Windows.Forms.TextBox();
+            this.tbTranslator = new System.Windows.Forms.TextBox();
+            this.tbPublisher = new System.Windows.Forms.TextBox();
             this.publisherLabel = new System.Windows.Forms.Label();
             this.dateLabel = new System.Windows.Forms.Label();
-            this.datePubTextBox = new System.Windows.Forms.TextBox();
+            this.tbDateOfPublication = new System.Windows.Forms.TextBox();
             this.idLabel = new System.Windows.Forms.Label();
-            this.idTextBox = new System.Windows.Forms.TextBox();
+            this.tbBookID = new System.Windows.Forms.TextBox();
             this.fileNameLabel = new System.Windows.Forms.Label();
             this.fileNameLabel2 = new System.Windows.Forms.Label();
             this.fileFormatLabel = new System.Windows.Forms.Label();
@@ -169,9 +169,9 @@
             this.pasteToolStripMenuItem.Text = "Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
-            // openFD
+            // ofd
             // 
-            this.openFD.FileName = "openFileDialog1";
+            this.ofd.FileName = "openFileDialog1";
             // 
             // label1
             // 
@@ -181,13 +181,13 @@
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 3;
             // 
-            // richTextBox1
+            // tbFileContent
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(15, 27);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(511, 574);
-            this.richTextBox1.TabIndex = 2;
-            this.richTextBox1.Text = "";
+            this.tbFileContent.Location = new System.Drawing.Point(15, 27);
+            this.tbFileContent.Name = "tbFileContent";
+            this.tbFileContent.Size = new System.Drawing.Size(511, 574);
+            this.tbFileContent.TabIndex = 2;
+            this.tbFileContent.Text = "";
             // 
             // authorLabel
             // 
@@ -198,12 +198,12 @@
             this.authorLabel.TabIndex = 4;
             this.authorLabel.Text = "Author:";
             // 
-            // authorTextBox
+            // tbAuthor
             // 
-            this.authorTextBox.Location = new System.Drawing.Point(536, 45);
-            this.authorTextBox.Name = "authorTextBox";
-            this.authorTextBox.Size = new System.Drawing.Size(100, 20);
-            this.authorTextBox.TabIndex = 5;
+            this.tbAuthor.Location = new System.Drawing.Point(536, 45);
+            this.tbAuthor.Name = "tbAuthor";
+            this.tbAuthor.Size = new System.Drawing.Size(100, 20);
+            this.tbAuthor.TabIndex = 5;
             // 
             // titleLabel
             // 
@@ -214,12 +214,12 @@
             this.titleLabel.TabIndex = 6;
             this.titleLabel.Text = "Title:";
             // 
-            // titleTextBox
+            // tbTitle
             // 
-            this.titleTextBox.Location = new System.Drawing.Point(536, 89);
-            this.titleTextBox.Name = "titleTextBox";
-            this.titleTextBox.Size = new System.Drawing.Size(100, 20);
-            this.titleTextBox.TabIndex = 7;
+            this.tbTitle.Location = new System.Drawing.Point(536, 89);
+            this.tbTitle.Name = "tbTitle";
+            this.tbTitle.Size = new System.Drawing.Size(100, 20);
+            this.tbTitle.TabIndex = 7;
             // 
             // translatorLabel
             // 
@@ -230,19 +230,19 @@
             this.translatorLabel.TabIndex = 8;
             this.translatorLabel.Text = "Translator:";
             // 
-            // translatorTextBox
+            // tbTranslator
             // 
-            this.translatorTextBox.Location = new System.Drawing.Point(536, 132);
-            this.translatorTextBox.Name = "translatorTextBox";
-            this.translatorTextBox.Size = new System.Drawing.Size(100, 20);
-            this.translatorTextBox.TabIndex = 9;
+            this.tbTranslator.Location = new System.Drawing.Point(536, 132);
+            this.tbTranslator.Name = "tbTranslator";
+            this.tbTranslator.Size = new System.Drawing.Size(100, 20);
+            this.tbTranslator.TabIndex = 9;
             // 
-            // publisherTextBox
+            // tbPublisher
             // 
-            this.publisherTextBox.Location = new System.Drawing.Point(536, 171);
-            this.publisherTextBox.Name = "publisherTextBox";
-            this.publisherTextBox.Size = new System.Drawing.Size(100, 20);
-            this.publisherTextBox.TabIndex = 10;
+            this.tbPublisher.Location = new System.Drawing.Point(536, 171);
+            this.tbPublisher.Name = "tbPublisher";
+            this.tbPublisher.Size = new System.Drawing.Size(100, 20);
+            this.tbPublisher.TabIndex = 10;
             // 
             // publisherLabel
             // 
@@ -262,12 +262,12 @@
             this.dateLabel.TabIndex = 12;
             this.dateLabel.Text = "Date of pub.:";
             // 
-            // datePubTextBox
+            // tbDateOfPublication
             // 
-            this.datePubTextBox.Location = new System.Drawing.Point(536, 214);
-            this.datePubTextBox.Name = "datePubTextBox";
-            this.datePubTextBox.Size = new System.Drawing.Size(100, 20);
-            this.datePubTextBox.TabIndex = 13;
+            this.tbDateOfPublication.Location = new System.Drawing.Point(536, 214);
+            this.tbDateOfPublication.Name = "tbDateOfPublication";
+            this.tbDateOfPublication.Size = new System.Drawing.Size(100, 20);
+            this.tbDateOfPublication.TabIndex = 13;
             // 
             // idLabel
             // 
@@ -278,12 +278,12 @@
             this.idLabel.TabIndex = 14;
             this.idLabel.Text = "Book ID:";
             // 
-            // idTextBox
+            // tbBookID
             // 
-            this.idTextBox.Location = new System.Drawing.Point(536, 254);
-            this.idTextBox.Name = "idTextBox";
-            this.idTextBox.Size = new System.Drawing.Size(100, 20);
-            this.idTextBox.TabIndex = 15;
+            this.tbBookID.Location = new System.Drawing.Point(536, 254);
+            this.tbBookID.Name = "tbBookID";
+            this.tbBookID.Size = new System.Drawing.Size(100, 20);
+            this.tbBookID.TabIndex = 15;
             // 
             // fileNameLabel
             // 
@@ -404,7 +404,7 @@
             // 
             // dataGridView1
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Metadata,
             this.Data});
@@ -416,15 +416,19 @@
             // 
             // Metadata
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Metadata.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Metadata.HeaderText = "Metdadata";
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Metadata.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Metadata.HeaderText = "Metadata";
             this.Metadata.Name = "Metadata";
+            this.Metadata.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Metadata.Width = 120;
             // 
             // Data
             // 
             this.Data.HeaderText = "Data";
             this.Data.Name = "Data";
+            this.Data.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Data.Width = 225;
             // 
             // Reader
             // 
@@ -445,19 +449,19 @@
             this.Controls.Add(this.fileFormatLabel);
             this.Controls.Add(this.fileNameLabel2);
             this.Controls.Add(this.fileNameLabel);
-            this.Controls.Add(this.idTextBox);
+            this.Controls.Add(this.tbBookID);
             this.Controls.Add(this.idLabel);
-            this.Controls.Add(this.datePubTextBox);
+            this.Controls.Add(this.tbDateOfPublication);
             this.Controls.Add(this.dateLabel);
             this.Controls.Add(this.publisherLabel);
-            this.Controls.Add(this.publisherTextBox);
-            this.Controls.Add(this.translatorTextBox);
+            this.Controls.Add(this.tbPublisher);
+            this.Controls.Add(this.tbTranslator);
             this.Controls.Add(this.translatorLabel);
-            this.Controls.Add(this.titleTextBox);
+            this.Controls.Add(this.tbTitle);
             this.Controls.Add(this.titleLabel);
-            this.Controls.Add(this.authorTextBox);
+            this.Controls.Add(this.tbAuthor);
             this.Controls.Add(this.authorLabel);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.tbFileContent);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -480,27 +484,27 @@
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
-        private System.Windows.Forms.OpenFileDialog openFD;
+        private System.Windows.Forms.OpenFileDialog ofd;
         private System.Windows.Forms.SaveFileDialog saveFD;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox tbFileContent;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
         private System.Windows.Forms.Label authorLabel;
-        private System.Windows.Forms.TextBox authorTextBox;
+        private System.Windows.Forms.TextBox tbAuthor;
         private System.Windows.Forms.Label titleLabel;
-        private System.Windows.Forms.TextBox titleTextBox;
+        private System.Windows.Forms.TextBox tbTitle;
         private System.Windows.Forms.Label translatorLabel;
-        private System.Windows.Forms.TextBox translatorTextBox;
-        private System.Windows.Forms.TextBox publisherTextBox;
+        private System.Windows.Forms.TextBox tbTranslator;
+        private System.Windows.Forms.TextBox tbPublisher;
         private System.Windows.Forms.Label publisherLabel;
         private System.Windows.Forms.Label dateLabel;
-        private System.Windows.Forms.TextBox datePubTextBox;
+        private System.Windows.Forms.TextBox tbDateOfPublication;
         private System.Windows.Forms.Label idLabel;
-        private System.Windows.Forms.TextBox idTextBox;
+        private System.Windows.Forms.TextBox tbBookID;
         private System.Windows.Forms.Label fileNameLabel;
         private System.Windows.Forms.Label fileNameLabel2;
         private System.Windows.Forms.Label fileFormatLabel;

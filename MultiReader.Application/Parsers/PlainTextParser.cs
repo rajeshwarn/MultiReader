@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using MultiReader.Application.Files;
+using MultiReader.Application.Models;
 
 namespace MultiReader.Application.Parsers
 {
-    public class PlainTextParser : IParser
+    public class PlainTextParser : AbstractParser
     {
         ContentFile file;
 
@@ -21,32 +22,31 @@ namespace MultiReader.Application.Parsers
 
             file = new ContentFile()
             {
-                content = fileContent
+                contentText = fileContent
             };
         }
 
-        public Dictionary<MetadataType, string> metadata = new Dictionary<MetadataType, string>();
-
-        public string GetMetadata(MetadataType type)
+        public override IEnumerable<string> GetMetadata(MetadataType type)
         {
-            if (metadata.ContainsKey(type))
-                return metadata[type];
+            if (parsedFile.Metadata.ContainsKey(type))
+                return parsedFile.Metadata[type];
+
             return null;
         }
 
-        public void SetMetadata(MetadataType type, string value)
+        public override void SetMetadata(MetadataType type, IEnumerable<string> value)
         {
-            metadata[type] = value;
+            parsedFile.Metadata[type] = value.ToList();
         }
 
-        public string GetFileContent()
+        public override string GetFileContent()
         {
-            return file.content;
+            return file.contentText;
         }
 
-        public void SetFile(string fileName, string text)
+        public override void SaveFileAs(string fileName, FileType type)
         {
-
+            throw new NotImplementedException("...");
         }
     }
 }

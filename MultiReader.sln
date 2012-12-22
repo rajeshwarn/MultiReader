@@ -11,6 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{6B63E3DF-C0B
 	ProjectSection(SolutionItems) = preProject
 		Lib\DotNetEpub.dll = Lib\DotNetEpub.dll
 		Lib\eBdb.EpubReader.dll = Lib\eBdb.EpubReader.dll
+		Lib\Ionic.Zip.dll = Lib\Ionic.Zip.dll
 		Lib\Ionic.Zip.Reduced.dll = Lib\Ionic.Zip.Reduced.dll
 		Lib\itextsharp.dll = Lib\itextsharp.dll
 	EndProjectSection

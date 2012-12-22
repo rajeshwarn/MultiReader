@@ -5,23 +5,25 @@ using System.Text;
 using System.IO;
 using MultiReader.Application.Parsers;
 using MultiReader.Application.Files;
+using MultiReader.Application.Helpers;
 using Microsoft.Win32;
 using Microsoft.Office.Interop.Word;
 using Word = Microsoft.Office.Interop.Word;
 using System.Xml;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using MultiReader.Application.Models;
 
 namespace MultiReader.Application.Parsers
 {
-    class DocParser : IParser
+    class DocParser : AbstractParser
     {
-        object readOnly = false;
-        object isVisible = false;
-        object missing = System.Reflection.Missing.Value;
+        private object missing = System.Reflection.Missing.Value;
+
+        private object readOnly = false;
+        private object isVisible = false;
         private Word.Application WordApp;
-        Word.Document doc;
-        private ContentFile parsedFile;
+        private Word.Document doc;
 
         public DocParser()
         {
@@ -39,15 +41,12 @@ namespace MultiReader.Application.Parsers
                                                             ref missing);
             parsedFile = new ContentFile()
             {
-                content = "<unknown>",
-                //contentFull = epub.GetContentAsHtml()
+                contentRaw = doc.WordOpenXML,
+                contentText = GetFileContent(),
             };
-            
-        }
+        } 
 
-        public Dictionary<MetadataType, string> metadata = new Dictionary<MetadataType, string>();
-
-        public string GetMetadata(MetadataType type)
+        public override IEnumerable<string> GetMetadata(MetadataType type)
         {
             string propertyName;
             string propertyValue;
@@ -55,23 +54,21 @@ namespace MultiReader.Application.Parsers
             {
                 propertyName = type.ToString();
                 propertyValue = GetWordDocumentPropertyValue(doc, propertyName).ToString();
-                return propertyValue;
+                return new List<string> { propertyValue };
             }
             catch
             {
-                return "";
+                return new List<string> { String.Empty };
             }
         }
 
-        public void SetMetadata(MetadataType type, string value)
+        public override void SetMetadata(MetadataType type, IEnumerable<string> value)
         {
-            string propertyName;
-            propertyName = type.ToString();
-            SetWordDocumentPropertyValue(doc, propertyName, value);
-            //metadata[type] = value;
+            parsedFile.Metadata[type] = value;
+            SetWordDocumentPropertyValue(doc, type.ToString(), value.JoinUsing(", "));
         }
 
-        public string GetFileContent()
+        public override string GetFileContent()
         {
             StringBuilder text = new StringBuilder();
             using (XmlReader reader = XmlReader.Create(new StringReader(doc.Content.get_XML())))
@@ -98,7 +95,7 @@ namespace MultiReader.Application.Parsers
             return text.ToString();
         }
 
-        public void SetFile(string fileName, string text)
+        public override void SaveFileAs(string fileName, FileType type)
         {
             object Visible = false;
             object start1 = 0;
@@ -107,7 +104,7 @@ namespace MultiReader.Application.Parsers
             WordApp = new Word.Application();
             doc = WordApp.Documents.Add(ref missing, ref missing, ref missing, ref missing);
             Range rng = doc.Range(ref start1, ref missing);           
-            rng.InsertAfter(text);
+            rng.InsertAfter(parsedFile.contentRaw);
             object filename = fileName;
 
             doc.SaveAs(ref filename, ref missing, ref missing, 

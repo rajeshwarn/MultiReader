@@ -56,6 +56,9 @@
     <Reference Include="eBdb.EpubReader">
       <HintPath>..\Lib\eBdb.EpubReader.dll</HintPath>
     </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\Lib\Ionic.Zip.dll</HintPath>
+    </Reference>
     <Reference Include="itextsharp">
       <HintPath>..\Lib\itextsharp.dll</HintPath>
     </Reference>
@@ -73,7 +76,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\Extensions.cs" />
+    <Compile Include="Models\FileType.cs" />
     <Compile Include="Models\MetadataType.cs" />
+    <Compile Include="Parsers\AbstractParser.cs" />
     <Compile Include="Parsers\Class1.cs" />
     <Compile Include="Parsers\EpubParser.cs" />
     <Compile Include="Parsers\PdfParser.cs" />

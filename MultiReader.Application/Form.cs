@@ -9,15 +9,10 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
-//using Microsoft.Win32;
-//using Microsoft.Office.Interop.Word;
-//using Word = Microsoft.Office.Interop.Word;
-//using iTextSharp.text;
-//using iTextSharp.text.pdf;
-//using iTextSharp.text.pdf.parser;
-//using eBdb.EpubReader;
 using MultiReader.Application.Parsers;
 using MultiReader.Application.Files;
+using MultiReader.Application.Helpers;
+using MultiReader.Application.Models;
 
 namespace MultiReader
 {
@@ -37,74 +32,78 @@ namespace MultiReader
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            richTextBox1.Clear();
+            tbFileContent.Clear();
             label1.Text = "";
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string chosen_File = "";
+            string filePath = "";
 
             //openFD.InitialDirectory = "C:";
-            openFD.Title = "Open a File";
-            openFD.FileName = "";
-            openFD.Filter = "Text Document (.txt)|*.txt|Rich Text Document (.rtf)|*.rtf|Microsoft Word Document (.doc)|*.doc|PDF Document (.pdf)|*.pdf|EPUB Files (.epub)|*.epub";
+            ofd.Title = "Open a File";
+            ofd.FileName = "";
+            ofd.Filter = "Text Document (.txt)|*.txt|Rich Text Document (.rtf)|*.rtf|Microsoft Word Document (.doc)|*.doc|PDF Document (.pdf)|*.pdf|EPUB Files (.epub)|*.epub";
             string ext;
 
-            if (openFD.ShowDialog() != DialogResult.Cancel)
+            if (ofd.ShowDialog() != DialogResult.Cancel)
             {
-                chosen_File = openFD.FileName;
-                ext = Path.GetExtension(chosen_File);
-                FileInfo fInfo = new FileInfo(chosen_File); 
+                filePath = ofd.FileName;
+                ext = Path.GetExtension(filePath);
+                FileInfo fInfo = new FileInfo(filePath); 
 
                 switch(ext)
                 {
                     case ".txt":
-                        parser = new PlainTextParser(chosen_File);
-                        richTextBox1.Text = parser.GetFileContent();
+                        parser = new PlainTextParser(filePath);
+                        tbFileContent.Text = parser.GetFileContent();
                         parser.SetMetadata(MetadataType.Author, "unknown");
                         parser.SetMetadata(MetadataType.Title, "unknown");
                         parser.SetMetadata(MetadataType.Translator, "unknown");
                         parser.SetMetadata(MetadataType.Publisher, "unknown");
                         parser.SetMetadata(MetadataType.PublishDate, "unknown");
                         parser.SetMetadata(MetadataType.BookID, "unknown");
-                        authorTextBox.Text = parser.GetMetadata(MetadataType.Author);
-                        titleTextBox.Text = parser.GetMetadata(MetadataType.Title);
-                        translatorTextBox.Text = parser.GetMetadata(MetadataType.Translator);
-                        publisherTextBox.Text = parser.GetMetadata(MetadataType.Publisher);
+                        tbAuthor.Text = String.Join(", ", parser.GetMetadata(MetadataType.Author));
+                        tbTitle.Text = String.Join(", ", parser.GetMetadata(MetadataType.Title));
+                        tbTranslator.Text = String.Join(", ", parser.GetMetadata(MetadataType.Translator));
+                        tbPublisher.Text = String.Join(", ", parser.GetMetadata(MetadataType.Publisher));
 
                         break;
                     case ".rtf":
                         // Parser = new RtfParser(Chosen_File);
                         // richTextBox1.Text = Parser.GetFileContent();
-                        richTextBox1.LoadFile(chosen_File, RichTextBoxStreamType.RichText);
+                        tbFileContent.LoadFile(filePath, RichTextBoxStreamType.RichText);
                         break;
                     case ".doc":
-                        parser = new DocParser(chosen_File);
+                        parser = new DocParser(filePath);
                         string contentDOC = parser.GetFileContent();
-                        authorTextBox.Text = parser.GetMetadata(MetadataType.Author);
-                        titleTextBox.Text = parser.GetMetadata(MetadataType.Title);
+                        tbAuthor.Text = String.Join(", ", parser.GetMetadata(MetadataType.Author));
+                        tbTitle.Text = String.Join(", ", parser.GetMetadata(MetadataType.Title));
                         //translatorTextBox.Text = parser.GetMetadata(MetadataType.Translator);
                         //publisherTextBox.Text = parser.GetMetadata(MetadataType.Publisher);
-                        richTextBox1.Text = contentDOC;
+                        tbFileContent.Text = contentDOC;
                         break;
                     case ".pdf":
-                        parser = new PdfParser(chosen_File);
+                        parser = new PdfParser(filePath);
                         string contentPDF = parser.GetFileContent();
-                        richTextBox1.Text = contentPDF;
+                        tbFileContent.Text = contentPDF;
                         break;
                     case ".epub":
-                        parser = new EpubParser(chosen_File);
-                        titleTextBox.Text = parser.GetMetadata(MetadataType.Title);
-                        string contentEpub = parser.GetFileContent();
-                        richTextBox1.Text = contentEpub;
+                        parser = new EpubParser(filePath);
+                        tbAuthor.Text = parser.GetMetadata(MetadataType.Author).JoinUsing(", ");
+                        tbTitle.Text = parser.GetMetadata(MetadataType.Title).FirstOrDefault();
+                        tbPublisher.Text = parser.GetMetadata(MetadataType.Publisher).JoinUsing(", ");
+                        tbTranslator.Text = parser.GetMetadata(MetadataType.Translator).JoinUsing(", ");
+                        tbBookID.Text = parser.GetMetadata(MetadataType.BookID).JoinUsing(", ");
+                        tbDateOfPublication.Text = parser.GetMetadata(MetadataType.PublishDate).FirstOrDefault();
+                        tbFileContent.Text = parser.GetFileContent();
                         break;
                     default:
                         break;
 
                 }
 
-                label1.Text = openFD.FileName;
+                label1.Text = ofd.FileName;
                 fileNameLabel2.Text = fInfo.Name.ToString();
                 fileFormatLabel2.Text = fInfo.Extension.ToString();
                 fileSizeLabel2.Text = fInfo.Length.ToString();
@@ -127,28 +126,24 @@ namespace MultiReader
             {
                 saved_File = saveFD.FileName;
                 ext = Path.GetExtension(saved_File);
-                string file = richTextBox1.Text;
+                string file = tbFileContent.Text;
 
                 switch (ext)
                 {
                     case ".txt":
-                        richTextBox1.SaveFile(saved_File, RichTextBoxStreamType.PlainText);
+                        tbFileContent.SaveFile(saved_File, RichTextBoxStreamType.PlainText);
                         break;
                     case ".rtf":
-                        richTextBox1.SaveFile(saved_File, RichTextBoxStreamType.RichText);
+                        tbFileContent.SaveFile(saved_File, RichTextBoxStreamType.RichText);
                         break;
                     case ".doc":
-                        parser = new DocParser();
-                        parser.SetFile(saved_File, file);
-                        parser.SetMetadata(MetadataType.Author, authorTextBox.Text);
+                        parser.SaveFileAs(saved_File, FileType.Doc);
                         break;
-                    case ".pdf":                        
-                        parser = new PdfParser();
-                        parser.SetFile(saved_File, file);
+                    case ".pdf":                      
+                        parser.SaveFileAs(saved_File, FileType.Pdf);
                         break;
                     case ".epub":
-                        parser = new EpubParser(saved_File, "title");
-                        parser.SetFile(saved_File, file);
+                        parser.SaveFileAs(saved_File, FileType.Epub);
                         break;
                     default:
                         break;
@@ -163,17 +158,17 @@ namespace MultiReader
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            richTextBox1.Copy();
+            tbFileContent.Copy();
         }
 
         private void cutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            richTextBox1.Cut();
+            tbFileContent.Cut();
         }
 
         private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            richTextBox1.Paste();
+            tbFileContent.Paste();
         }
 
         private void Reader_Load_1(object sender, EventArgs e)

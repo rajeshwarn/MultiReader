@@ -8,13 +8,13 @@ using MultiReader.Application.Files;
 using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.parser;
 using iTextSharp.text;
+using MultiReader.Application.Models;
 
 namespace MultiReader.Application.Parsers
 {
-    class PdfParser : IParser
+    public class PdfParser : AbstractParser
     {
         PdfReader pdfReader;
-        ContentFile parsedFile;
         //PdfWriter pdfWriter;
 
         public PdfParser()
@@ -28,7 +28,7 @@ namespace MultiReader.Application.Parsers
 
             parsedFile = new ContentFile()
             {
-                content = "<unknown>",
+                contentText = "<unknown>",
                 //contentFull = epub.GetContentAsHtml()
             };
         }
@@ -40,21 +40,19 @@ namespace MultiReader.Application.Parsers
             pdfWriter = new PdfWriter();
         }*/
 
-        public Dictionary<MetadataType, string> metadata = new Dictionary<MetadataType, string>();
-
-        public string GetMetadata(MetadataType type)
+        public override IEnumerable<string> GetMetadata(MetadataType type)
         {
-            if (metadata.ContainsKey(type))
-                return metadata[type];
+            if (parsedFile.Metadata.ContainsKey(type))
+                return parsedFile.Metadata[type];
             return null;
         }
 
-        public void SetMetadata(MetadataType type, string value)
+        public override void SetMetadata(MetadataType type, IEnumerable<string> value)
         {
-            metadata[type] = value;
+            parsedFile.Metadata[type] = value.ToList();
         }
 
-        public string GetFileContent()
+        public override string GetFileContent()
         {
             StringBuilder text = new StringBuilder();
 
@@ -70,7 +68,7 @@ namespace MultiReader.Application.Parsers
             return text.ToString();
         }
 
-        public void SetFile(string fileName, string text)
+        public override void SaveFileAs(string fileName, FileType type)
         {
             // step 1: creation of a document-object
             iTextSharp.text.Document myDocument = new iTextSharp.text.Document(PageSize.A4.Rotate());
@@ -84,7 +82,7 @@ namespace MultiReader.Application.Parsers
                 myDocument.Open();
 
                 // step 4: Now add some contents to the document
-                myDocument.Add(new iTextSharp.text.Paragraph(text));
+                myDocument.Add(new iTextSharp.text.Paragraph(parsedFile.contentRaw));
 
             }
             catch (iTextSharp.text.DocumentException de)

@@ -7,7 +7,9 @@ namespace MultiReader.Application.Files
 {
     public class ContentFile
     {
-        public string content;
-        public string contentFull;
+        public string contentText { get; set; }
+        public string contentRaw { get; set; }
+
+        public Dictionary<MetadataType, IEnumerable<string>> Metadata { get; set; }
     }
 }

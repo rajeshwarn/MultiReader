@@ -4,48 +4,50 @@ using System.Linq;
 using System.Text;
 using MultiReader.Application.Files;
 using System.IO;
+using MultiReader.Application.Models;
 
 namespace MultiReader.Application.Parsers
 {
-    class RtfParser : IParser
+    class RtfParser : AbstractParser
     {
         ContentFile file;
 
-         public RtfParser(string filename)
+        public RtfParser(string filename)
         {
-             string fileContent = "";
-             using (StreamReader sr = new StreamReader(new FileStream(filename, FileMode.Open)))
-             {
-                 fileContent = sr.ReadToEnd();
-                 sr.Close();
-             }
+            string fileContent = "";
+            using (StreamReader sr = new StreamReader(new FileStream(filename, FileMode.Open)))
+            {
+                fileContent = sr.ReadToEnd();
+                sr.Close();
+            }
 
-             file = new ContentFile()
-             {
-                 content = fileContent
-             };
-         }
-         
-        public Dictionary<MetadataType, string> metadata = new Dictionary<MetadataType, string>();
+            file = new ContentFile()
+            {
+                contentText = fileContent
+            };
+        }
 
-         public string GetMetadata(MetadataType type)
-         {
-             if (metadata.ContainsKey(type))
-                 return metadata[type];
-             return null;
-         }
+        public override IEnumerable<string> GetMetadata(MetadataType type)
+        {
+            if (parsedFile.Metadata.ContainsKey(type))
+                return parsedFile.Metadata[type];
 
-         public void SetMetadata(MetadataType type, string value)
-         {
-             metadata[type] = value;
-         }
+            return null;
+        }
 
-         public string GetFileContent()
-         {
-             return file.content;
-         }
+        public override void SetMetadata(MetadataType type, IEnumerable<string> value)
+        {
+            parsedFile.Metadata[type] = value.ToList();
+        }
 
-         public void SetFile(string fileName, string text)
-         { }
+        public override string GetFileContent()
+        {
+            return file.contentText;
+        }
+
+        public override void SaveFileAs(string fileName, FileType type)
+        {
+            throw new NotImplementedException("...");
+        }
     }
 }

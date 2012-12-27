@@ -17,19 +17,13 @@ namespace MultiReader.Application.Parsers
         PdfReader pdfReader;
         //PdfWriter pdfWriter;
 
-        public PdfParser()
-        {
-
-        }
-
         public PdfParser(string fileName)
         {
             pdfReader = new PdfReader(fileName);
 
             parsedFile = new ContentFile()
             {
-                contentText = "<unknown>",
-                //contentFull = epub.GetContentAsHtml()
+                contentText = GetFileContent()
             };
         }
 

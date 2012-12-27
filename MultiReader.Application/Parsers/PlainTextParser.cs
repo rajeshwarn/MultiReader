@@ -10,7 +10,6 @@ namespace MultiReader.Application.Parsers
 {
     public class PlainTextParser : AbstractParser
     {
-        ContentFile file;
 
         public PlainTextParser(string filename)
         {
@@ -20,7 +19,7 @@ namespace MultiReader.Application.Parsers
                 fileContent = sr.ReadToEnd();
             }
 
-            file = new ContentFile()
+            parsedFile = new ContentFile()
             {
                 contentText = fileContent
             };
@@ -41,7 +40,7 @@ namespace MultiReader.Application.Parsers
 
         public override string GetFileContent()
         {
-            return file.contentText;
+            return parsedFile.contentText;
         }
 
         public override void SaveFileAs(string fileName, FileType type)

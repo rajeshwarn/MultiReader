@@ -7,50 +7,75 @@ using MultiReader.Application.Files;
 using MultiReader.Application.Parsers;
 using eBdb.EpubReader;
 using MultiReader.Application.Models;
+using SharpEpub;
 
 namespace MultiReader.Application.Parsers
 {
     public class EpubParser : AbstractParser
     {
-        eBdb.EpubReader.Epub epub; //odczytanie treści
-        //Epub.EpubFile epubFile; //odczytanie meta danych, zapis
-
-        #region Test
-        //public EpubParser()
-        //{
-        //    // Nie powinno być bezparametrowego konstruktora PLE PLE PLE
-        //}
-
-        //public EpubParser(string fileName, string title)
-        //{
-        //    epubFile = new Epub.EpubFile(fileName);
-        //    title = epubFile["title"];
-        //   // epubFile["title"] =  //"Oj tam oj tam";
-        //    epubFile.SaveTo(fileName + ".cpy");
-        //}
-        #endregion
-
-        public EpubParser(string title, string author, string id)
-        {
-        }
+        private eBdb.EpubReader.Epub epub;
+        private EpubFile parsedEpub;
 
         public EpubParser(string fileName)        
         {
             epub = new eBdb.EpubReader.Epub(fileName);
+
+            parsedFile = new ContentFile
+            {
+                contentRaw = epub.GetContentAsHtml(),
+                contentText = epub.GetContentAsPlainText()
+            };
+
+            EnsureAllCached();
         }
 
-        //Zwraca tekst z pliku epub
+        private string _contentRaw;
+        public string ContentRaw
+        {
+            get
+            {
+                if (_contentRaw == null)
+                    _contentRaw = epub.GetContentAsHtml();
+                return _contentRaw;
+            }
+            set { _contentRaw = value; }
+        }
+
+        private string _contentText;
+        public string ContentText
+        {
+            get
+            {
+                if (_contentText == null)
+                    _contentText = epub.GetContentAsPlainText();
+                return _contentText;
+            }
+            set { _contentText = value; }
+        }
+
         public override string GetFileContent() 
         {
-            return epub.GetContentAsPlainText();
+            return ContentText;
         }
 
         public override IEnumerable<string> GetMetadata(MetadataType type)
         {
+            EnsureCached(type);
+            return parsedFile.Metadata[type];
+        }
+
+        private void EnsureCached(MetadataType type)
+        {
             if (!parsedFile.Metadata.ContainsKey(type))
                 parsedFile.Metadata[type] = GetMetadataFromFile(type).ToList();
+        }
 
-            return parsedFile.Metadata[type];
+        private void EnsureAllCached()
+        {
+            foreach (MetadataType type in Enum.GetValues(typeof(MetadataType)))
+            {
+                EnsureCached(type);
+            }
         }
 
         private IEnumerable<string> GetMetadataFromFile(MetadataType type)

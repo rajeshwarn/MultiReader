@@ -7,10 +7,10 @@ using MultiReader.SharpEpub;
 
 namespace SharpEpub
 {
-	public class Epub : EpubBase
+	public class EpubFile : EpubBase
 	{
 		private string Directory { get; set; }
-		private SearchOption directorySearchOption = SearchOption.TopDirectoryOnly;
+		private SearchOption directorySearchOption = SearchOption.AllDirectories;
 
 		public SearchOption DirectorySearchOption
 		{
@@ -18,16 +18,16 @@ namespace SharpEpub
 			set { directorySearchOption = value; }
 		}
 		
-		public Epub(string epubDirectory, TocOptions option)
+		public EpubFile(string epubDirectory, TocOptions option)
 			: this(epubDirectory)
 		{
 			tocOption = option;
 		}
 
-		public Epub(string epubDirectory)
+        public EpubFile(string epubDirectory)
 		{
 			Directory = epubDirectory;
-			//ParseFilesByDefault();
+			ParseFilesByDefault();
 		}
 
 		private void ParseFilesByDefault()

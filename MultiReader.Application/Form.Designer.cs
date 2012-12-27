@@ -1,4 +1,4 @@
-﻿namespace MultiReader
+﻿namespace MultiReader.Application
 {
     partial class Reader
     {
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -202,7 +202,7 @@
             // 
             this.tbAuthor.Location = new System.Drawing.Point(536, 45);
             this.tbAuthor.Name = "tbAuthor";
-            this.tbAuthor.Size = new System.Drawing.Size(100, 20);
+            this.tbAuthor.Size = new System.Drawing.Size(201, 20);
             this.tbAuthor.TabIndex = 5;
             // 
             // titleLabel
@@ -218,7 +218,7 @@
             // 
             this.tbTitle.Location = new System.Drawing.Point(536, 89);
             this.tbTitle.Name = "tbTitle";
-            this.tbTitle.Size = new System.Drawing.Size(100, 20);
+            this.tbTitle.Size = new System.Drawing.Size(201, 20);
             this.tbTitle.TabIndex = 7;
             // 
             // translatorLabel
@@ -234,14 +234,14 @@
             // 
             this.tbTranslator.Location = new System.Drawing.Point(536, 132);
             this.tbTranslator.Name = "tbTranslator";
-            this.tbTranslator.Size = new System.Drawing.Size(100, 20);
+            this.tbTranslator.Size = new System.Drawing.Size(201, 20);
             this.tbTranslator.TabIndex = 9;
             // 
             // tbPublisher
             // 
             this.tbPublisher.Location = new System.Drawing.Point(536, 171);
             this.tbPublisher.Name = "tbPublisher";
-            this.tbPublisher.Size = new System.Drawing.Size(100, 20);
+            this.tbPublisher.Size = new System.Drawing.Size(201, 20);
             this.tbPublisher.TabIndex = 10;
             // 
             // publisherLabel
@@ -266,7 +266,7 @@
             // 
             this.tbDateOfPublication.Location = new System.Drawing.Point(536, 214);
             this.tbDateOfPublication.Name = "tbDateOfPublication";
-            this.tbDateOfPublication.Size = new System.Drawing.Size(100, 20);
+            this.tbDateOfPublication.Size = new System.Drawing.Size(201, 20);
             this.tbDateOfPublication.TabIndex = 13;
             // 
             // idLabel
@@ -282,13 +282,13 @@
             // 
             this.tbBookID.Location = new System.Drawing.Point(536, 254);
             this.tbBookID.Name = "tbBookID";
-            this.tbBookID.Size = new System.Drawing.Size(100, 20);
+            this.tbBookID.Size = new System.Drawing.Size(201, 20);
             this.tbBookID.TabIndex = 15;
             // 
             // fileNameLabel
             // 
             this.fileNameLabel.AutoSize = true;
-            this.fileNameLabel.Location = new System.Drawing.Point(678, 28);
+            this.fileNameLabel.Location = new System.Drawing.Point(743, 28);
             this.fileNameLabel.Name = "fileNameLabel";
             this.fileNameLabel.Size = new System.Drawing.Size(55, 13);
             this.fileNameLabel.TabIndex = 16;
@@ -297,16 +297,15 @@
             // fileNameLabel2
             // 
             this.fileNameLabel2.AutoSize = true;
-            this.fileNameLabel2.Location = new System.Drawing.Point(678, 45);
+            this.fileNameLabel2.Location = new System.Drawing.Point(743, 45);
             this.fileNameLabel2.Name = "fileNameLabel2";
             this.fileNameLabel2.Size = new System.Drawing.Size(0, 13);
             this.fileNameLabel2.TabIndex = 17;
-            this.fileNameLabel2.Click += new System.EventHandler(this.fileNameLabel2_Click);
             // 
             // fileFormatLabel
             // 
             this.fileFormatLabel.AutoSize = true;
-            this.fileFormatLabel.Location = new System.Drawing.Point(678, 73);
+            this.fileFormatLabel.Location = new System.Drawing.Point(743, 73);
             this.fileFormatLabel.Name = "fileFormatLabel";
             this.fileFormatLabel.Size = new System.Drawing.Size(58, 13);
             this.fileFormatLabel.TabIndex = 18;
@@ -315,16 +314,15 @@
             // fileFormatLabel2
             // 
             this.fileFormatLabel2.AutoSize = true;
-            this.fileFormatLabel2.Location = new System.Drawing.Point(678, 96);
+            this.fileFormatLabel2.Location = new System.Drawing.Point(743, 96);
             this.fileFormatLabel2.Name = "fileFormatLabel2";
             this.fileFormatLabel2.Size = new System.Drawing.Size(0, 13);
             this.fileFormatLabel2.TabIndex = 19;
-            this.fileFormatLabel2.Click += new System.EventHandler(this.fileFormatLabel2_Click);
             // 
             // fileSizeLabel
             // 
             this.fileSizeLabel.AutoSize = true;
-            this.fileSizeLabel.Location = new System.Drawing.Point(678, 116);
+            this.fileSizeLabel.Location = new System.Drawing.Point(743, 116);
             this.fileSizeLabel.Name = "fileSizeLabel";
             this.fileSizeLabel.Size = new System.Drawing.Size(63, 13);
             this.fileSizeLabel.TabIndex = 20;
@@ -333,16 +331,15 @@
             // fileSizeLabel2
             // 
             this.fileSizeLabel2.AutoSize = true;
-            this.fileSizeLabel2.Location = new System.Drawing.Point(678, 139);
+            this.fileSizeLabel2.Location = new System.Drawing.Point(743, 139);
             this.fileSizeLabel2.Name = "fileSizeLabel2";
             this.fileSizeLabel2.Size = new System.Drawing.Size(0, 13);
             this.fileSizeLabel2.TabIndex = 21;
-            this.fileSizeLabel2.Click += new System.EventHandler(this.fileSizeLabel2_Click);
             // 
             // creationTimeLabel
             // 
             this.creationTimeLabel.AutoSize = true;
-            this.creationTimeLabel.Location = new System.Drawing.Point(678, 155);
+            this.creationTimeLabel.Location = new System.Drawing.Point(743, 155);
             this.creationTimeLabel.Name = "creationTimeLabel";
             this.creationTimeLabel.Size = new System.Drawing.Size(71, 13);
             this.creationTimeLabel.TabIndex = 22;
@@ -351,7 +348,7 @@
             // lastAccessTimeLabel
             // 
             this.lastAccessTimeLabel.AutoSize = true;
-            this.lastAccessTimeLabel.Location = new System.Drawing.Point(678, 198);
+            this.lastAccessTimeLabel.Location = new System.Drawing.Point(743, 198);
             this.lastAccessTimeLabel.Name = "lastAccessTimeLabel";
             this.lastAccessTimeLabel.Size = new System.Drawing.Size(67, 13);
             this.lastAccessTimeLabel.TabIndex = 23;
@@ -360,7 +357,7 @@
             // lastWriteTimeLabel
             // 
             this.lastWriteTimeLabel.AutoSize = true;
-            this.lastWriteTimeLabel.Location = new System.Drawing.Point(678, 237);
+            this.lastWriteTimeLabel.Location = new System.Drawing.Point(743, 237);
             this.lastWriteTimeLabel.Name = "lastWriteTimeLabel";
             this.lastWriteTimeLabel.Size = new System.Drawing.Size(55, 13);
             this.lastWriteTimeLabel.TabIndex = 24;
@@ -369,29 +366,26 @@
             // lastTimeWriteLabel2
             // 
             this.lastTimeWriteLabel2.AutoSize = true;
-            this.lastTimeWriteLabel2.Location = new System.Drawing.Point(678, 261);
+            this.lastTimeWriteLabel2.Location = new System.Drawing.Point(743, 261);
             this.lastTimeWriteLabel2.Name = "lastTimeWriteLabel2";
             this.lastTimeWriteLabel2.Size = new System.Drawing.Size(0, 13);
             this.lastTimeWriteLabel2.TabIndex = 25;
-            this.lastTimeWriteLabel2.Click += new System.EventHandler(this.lastTimeWriteLabel2_Click);
             // 
             // lastAccessTimeLabel2
             // 
             this.lastAccessTimeLabel2.AutoSize = true;
-            this.lastAccessTimeLabel2.Location = new System.Drawing.Point(678, 221);
+            this.lastAccessTimeLabel2.Location = new System.Drawing.Point(743, 221);
             this.lastAccessTimeLabel2.Name = "lastAccessTimeLabel2";
             this.lastAccessTimeLabel2.Size = new System.Drawing.Size(0, 13);
             this.lastAccessTimeLabel2.TabIndex = 26;
-            this.lastAccessTimeLabel2.Click += new System.EventHandler(this.lastAccessTimeLabel2_Click);
             // 
             // creationTimeLabel2
             // 
             this.creationTimeLabel2.AutoSize = true;
-            this.creationTimeLabel2.Location = new System.Drawing.Point(678, 178);
+            this.creationTimeLabel2.Location = new System.Drawing.Point(743, 178);
             this.creationTimeLabel2.Name = "creationTimeLabel2";
             this.creationTimeLabel2.Size = new System.Drawing.Size(0, 13);
             this.creationTimeLabel2.TabIndex = 27;
-            this.creationTimeLabel2.Click += new System.EventHandler(this.creationTimeLabel2_Click);
             // 
             // richTextBox2
             // 
@@ -416,8 +410,8 @@
             // 
             // Metadata
             // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Metadata.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Metadata.DefaultCellStyle = dataGridViewCellStyle1;
             this.Metadata.HeaderText = "Metadata";
             this.Metadata.Name = "Metadata";
             this.Metadata.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -467,7 +461,6 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Reader";
             this.Text = "Form";
-            this.Load += new System.EventHandler(this.Reader_Load_1);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

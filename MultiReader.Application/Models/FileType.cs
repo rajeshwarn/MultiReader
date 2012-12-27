@@ -10,7 +10,7 @@ namespace MultiReader.Application.Models
         PlainText,
         RichText,
         Pdf,
-        Doc,
+        Docx,
         Epub,
         Mobi
     }

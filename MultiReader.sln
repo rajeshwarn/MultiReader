@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{6B63E3DF-C0B
 		Lib\Ionic.Zip.dll = Lib\Ionic.Zip.dll
 		Lib\Ionic.Zip.Reduced.dll = Lib\Ionic.Zip.Reduced.dll
 		Lib\itextsharp.dll = Lib\itextsharp.dll
+		Lib\itextsharp.pdfa.dll = Lib\itextsharp.pdfa.dll
+		Lib\itextsharp.xtra.dll = Lib\itextsharp.xtra.dll
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharpEpub", "SharpEpub", "{91D4A03E-7EA2-4AF8-9020-6F3D815919A2}"

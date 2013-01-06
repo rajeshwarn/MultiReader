@@ -13,15 +13,5 @@ namespace MultiReader.Application.Files
         public string contentRaw { get; set; }
 
         public Dictionary<MetadataType, IEnumerable<string>> Metadata = new Dictionary<MetadataType, IEnumerable<string>>();
-
-        public void SaveAs(string fileName, FileType type)
-        {
-            if (type == FileType.Docx)
-            {
-                DocxParser parser = new DocxParser(this);
-                parser.SaveFileAs(fileName, type);
-                parser.Dispose();
-            }
-        }
     }
 }

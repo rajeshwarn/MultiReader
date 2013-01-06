@@ -100,24 +100,15 @@ namespace MultiReader.Application.Parsers
 
         public override void SaveFileAs(string fileName, FileType type)
         {
-            if (type == FileType.Docx)
-            {
-                Save();
+            Save();
 
-                if (File.Exists(fileName))
-                    File.Delete(fileName);
+            if (File.Exists(fileName))
+                File.Delete(fileName);
 
-                File.Copy(path, fileName);
+            File.Copy(path, fileName);
 
-                ClearTempFile();
-                disposed = true;
-            }
-            else
-            {
-                parsedFile.SaveAs(fileName, type);
-                Dispose();
-                disposed = true;
-            }
+            ClearTempFile();
+            disposed = true;
         }
 
         private void ClearTempFile()

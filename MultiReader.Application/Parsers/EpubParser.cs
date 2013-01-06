@@ -5,28 +5,22 @@ using System.Text;
 using System.IO;
 using MultiReader.Application.Files;
 using MultiReader.Application.Parsers;
-using eBdb.EpubReader;
+using MultiReader.Application.Helpers;
 using MultiReader.Application.Models;
 using SharpEpub;
+using Epub;
+using System.Collections;
 
 namespace MultiReader.Application.Parsers
 {
     public class EpubParser : AbstractParser
     {
         private eBdb.EpubReader.Epub epub;
-        private EpubFile parsedEpub;
+        private Document parsedEpub;
 
         public EpubParser(string fileName)        
         {
             epub = new eBdb.EpubReader.Epub(fileName);
-
-            parsedFile = new ContentFile
-            {
-                contentRaw = epub.GetContentAsHtml(),
-                contentText = epub.GetContentAsPlainText()
-            };
-
-            EnsureAllCached();
         }
 
         private string _contentRaw;
@@ -60,22 +54,7 @@ namespace MultiReader.Application.Parsers
 
         public override IEnumerable<string> GetMetadata(MetadataType type)
         {
-            EnsureCached(type);
-            return parsedFile.Metadata[type];
-        }
-
-        private void EnsureCached(MetadataType type)
-        {
-            if (!parsedFile.Metadata.ContainsKey(type))
-                parsedFile.Metadata[type] = GetMetadataFromFile(type).ToList();
-        }
-
-        private void EnsureAllCached()
-        {
-            foreach (MetadataType type in Enum.GetValues(typeof(MetadataType)))
-            {
-                EnsureCached(type);
-            }
+            return GetMetadataFromFile(type);
         }
 
         private IEnumerable<string> GetMetadataFromFile(MetadataType type)
@@ -108,7 +87,64 @@ namespace MultiReader.Application.Parsers
 
         public override void SaveFileAs(string fileName, FileType type)
         {
-            throw new NotImplementedException("...");
+            parsedEpub = new Document();
+
+            foreach (DictionaryEntry chapter in epub.Content)
+            {
+                var chapterContent = (eBdb.EpubReader.ContentData)chapter.Value;
+                parsedEpub.AddXhtmlData(chapterContent.FileName, chapterContent.Content);
+            }
+
+            foreach (DictionaryEntry extendedData in epub.ExtendedData)
+            {
+                var dataContent = (eBdb.EpubReader.ExtendedData)extendedData.Value;
+
+                if (dataContent.IsText && dataContent.FileName.EndsWith(".css"))
+                    parsedEpub.AddStylesheetData(dataContent.FileName, dataContent.Content);
+                else if (!dataContent.IsText && dataContent.FileName.EndsWith(".jpg") ||
+                                                dataContent.FileName.EndsWith(".png") ||
+                                                dataContent.FileName.EndsWith(".bmp") ||
+                                                dataContent.FileName.EndsWith(".jpeg"))
+                {
+                    parsedEpub.AddImageData(dataContent.FileName, Encoding.UTF8.GetBytes(dataContent.Content));
+                }
+            }
+
+            foreach (eBdb.EpubReader.NavPoint tocEntry in epub.TOC)
+            {
+                FillTocRecursively(tocEntry, null);
+            }
+
+            parsedEpub.AddAuthor(epub.Creator.JoinUsing(", "));
+            parsedEpub.AddBookIdentifier(epub.ID.JoinUsing(", "));
+            parsedEpub.AddDescription(epub.Description.JoinUsing(", "));
+            parsedEpub.AddFormat(epub.Format.JoinUsing(", "));
+            parsedEpub.AddLanguage(epub.Language.JoinUsing(", "));
+            parsedEpub.AddRelation(epub.Relation.JoinUsing(", "));
+            parsedEpub.AddRights(epub.Rights.JoinUsing(", "));
+            parsedEpub.AddSubject(epub.Subject.JoinUsing(", "));
+            parsedEpub.AddTitle(epub.Title.JoinUsing(", "));
+            parsedEpub.AddType(epub.Type.JoinUsing(", "));
+
+            parsedEpub.Generate(fileName);
+        }
+
+        private void FillTocRecursively(eBdb.EpubReader.NavPoint tocEntry, NavPoint parent)
+        {
+            NavPoint navPoint;
+            
+            if (parent != null)
+                navPoint = parent.AddNavPoint(tocEntry.Title, tocEntry.Source, tocEntry.Order);
+            else
+                navPoint = parsedEpub.AddNavPoint(tocEntry.Title, tocEntry.Source, tocEntry.Order);
+
+            if (tocEntry.Children == null)
+                return;
+
+            foreach (eBdb.EpubReader.NavPoint nestedEntry in tocEntry.Children)
+            {
+                FillTocRecursively(nestedEntry, navPoint);
+            }
         }
     }
 }

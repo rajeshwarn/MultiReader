@@ -83,6 +83,7 @@
     </Compile>
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Models\FileType.cs" />
+    <Compile Include="Models\Metadata.cs" />
     <Compile Include="Models\MetadataType.cs" />
     <Compile Include="Parsers\AbstractParser.cs" />
     <Compile Include="Parsers\Class1.cs" />

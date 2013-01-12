@@ -17,10 +17,12 @@ namespace MultiReader.Application.Parsers
     {
         private eBdb.EpubReader.Epub epub;
         private Document parsedEpub;
+        private EpubMetadata metadata;
 
         public EpubParser(string fileName)        
         {
             epub = new eBdb.EpubReader.Epub(fileName);
+            LoadAllMetadata();
         }
 
         private string _contentRaw;
@@ -77,6 +79,55 @@ namespace MultiReader.Application.Parsers
             }
 
             return new List<string>();
+        }
+
+        public override IEnumerable<Metadata> GetAllMetadata()
+        {
+            return metadata.GetAllMetadata();
+        }
+
+        private void LoadAllMetadata()
+        {
+            metadata = new EpubMetadata();
+            metadata.Contributor = new Metadata { Name = "Contributor", Value = epub.Contributer };
+            metadata.Coverage = new Metadata { Name = "Coverage", Value = epub.Coverage};
+            metadata.Author = new Metadata { Name = "Author", Value = epub.Creator };
+            metadata.PublishDate = new Metadata { Name = "PublishDate", Value = epub.Date.Where(d => d.Type == "publication").Select(d => d.Date) };
+            metadata.Description = new Metadata { Name = "Description", Value = epub.Description };
+            metadata.Format = new Metadata { Name = "Format", Value = epub.Format };
+            metadata.ID = new Metadata { Name = "ID", Value = epub.ID };
+            metadata.Language = new Metadata { Name = "Language", Value = epub.Language };
+            metadata.Publisher = new Metadata { Name = "Publisher", Value = epub.Publisher };
+            metadata.Relation = new Metadata { Name = "Relation", Value = epub.Relation };
+            metadata.Rights = new Metadata { Name = "Rights", Value = epub.Rights };
+            metadata.Source = new Metadata { Name = "Source", Value = epub.Source };
+            metadata.Subject = new Metadata { Name = "Subject", Value = epub.Subject };
+            metadata.Title = new Metadata { Name = "Title", Value = epub.Title };
+            metadata.Type = new Metadata { Name = "Type", Value = epub.Type };
+            metadata.UUID = new Metadata { Name = "UUID", Value = new[] { epub.UUID } };
+        }
+
+        public override void SetMetadata(Metadata data)
+        {
+            switch (data.Name)
+            {
+                case "Contributor": metadata.Contributor.Value = data.Value; break;
+                case "Coverage": metadata.Coverage.Value = data.Value; break;
+                case "Author": metadata.Author.Value = data.Value; break;
+                case "PublishDate": metadata.PublishDate.Value = data.Value; break;
+                case "Description": metadata.Description.Value = data.Value; break;
+                case "Format": metadata.Format.Value = data.Value; break;
+                case "ID": metadata.ID.Value = data.Value; break;
+                case "Language": metadata.Language.Value = data.Value; break;
+                case "Publisher": metadata.Publisher.Value = data.Value; break;
+                case "Relation": metadata.Relation.Value = data.Value; break;
+                case "Rights": metadata.Rights.Value = data.Value; break;
+                case "Source": metadata.Source.Value = data.Value; break;
+                case "Subject": metadata.Subject.Value = data.Value; break;
+                case "Title": metadata.Title.Value = data.Value; break;
+                case "Type": metadata.Type.Value = data.Value; break;
+                case "UUID": metadata.UUID.Value = data.Value; break;
+            }
         }
 
         //Ustawia metadane
@@ -145,6 +196,46 @@ namespace MultiReader.Application.Parsers
             {
                 FillTocRecursively(nestedEntry, navPoint);
             }
+        }
+    }
+
+    public class EpubMetadata
+    {            
+        public Metadata Contributor;
+        public Metadata Coverage;
+        public Metadata Author;
+        public Metadata PublishDate;
+        public Metadata Description;
+        public Metadata Format;
+        public Metadata ID;
+        public Metadata Language;
+        public Metadata Publisher;
+        public Metadata Relation;
+        public Metadata Rights;
+        public Metadata Source;
+        public Metadata Subject;
+        public Metadata Title;
+        public Metadata Type;
+        public Metadata UUID;
+
+        public IEnumerable<Metadata> GetAllMetadata()
+        {
+            yield return Contributor;
+            yield return Coverage;
+            yield return Author;
+            yield return PublishDate;
+            yield return Description;
+            yield return Format;
+            yield return ID;
+            yield return Language;
+            yield return Publisher;
+            yield return Relation;
+            yield return Rights;
+            yield return Source;
+            yield return Subject;
+            yield return Title;
+            yield return Type;
+            yield return UUID;
         }
     }
 }

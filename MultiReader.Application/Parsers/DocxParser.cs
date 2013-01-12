@@ -19,6 +19,7 @@ namespace MultiReader.Application.Parsers
         private bool disposed = false;
         private WordprocessingDocument doc;
         private string path;
+        private DocxMetadata metadata;
 
         public DocxParser(ContentFile file)
         {
@@ -60,6 +61,8 @@ namespace MultiReader.Application.Parsers
 
             if (doc.PackageProperties.Created.HasValue)
                 SetMetadata(MetadataType.PublishDate, doc.PackageProperties.Created.Value.ToString());
+
+            LoadAllMetadata();
         }
 
         private MetadataType[] ignoredMetadata = new [] 
@@ -160,6 +163,104 @@ namespace MultiReader.Application.Parsers
         {
             Save();
             ClearTempFile();
+        }
+
+        public void LoadAllMetadata()
+        {
+            metadata = new DocxMetadata();
+
+            metadata.Category = new Metadata { Name = "Category", Value = GetValue(doc.PackageProperties.Category) };
+            metadata.ContentStatus = new Metadata { Name = "ContentStatus", Value = GetValue(doc.PackageProperties.ContentStatus) };
+            metadata.ContentType = new Metadata { Name = "ContentType", Value = GetValue(doc.PackageProperties.ContentType) };
+            metadata.Created = new Metadata { Name = "Created", Value = new[] { doc.PackageProperties.Created.HasValue ? doc.PackageProperties.Created.ToString() : "" } };
+            metadata.Creator = new Metadata { Name = "Creator", Value = GetValue(doc.PackageProperties.Creator) };
+            metadata.Description = new Metadata { Name = "Description", Value = GetValue(doc.PackageProperties.Description) };
+            metadata.Identifier = new Metadata { Name = "Identifier", Value = GetValue(doc.PackageProperties.Identifier) };
+            metadata.Keywords = new Metadata { Name = "Keywords", Value = GetValue(doc.PackageProperties.Keywords) };
+            metadata.Language = new Metadata { Name = "Language", Value = GetValue(doc.PackageProperties.Language) };
+            metadata.LastModifiedBy = new Metadata { Name = "LastModifiedBy", Value = GetValue(doc.PackageProperties.LastModifiedBy) };
+            metadata.LastPrinted = new Metadata { Name = "LastPrinted", Value = new[] { doc.PackageProperties.LastPrinted.HasValue ? doc.PackageProperties.LastPrinted.ToString() : "" } };
+            metadata.Modified = new Metadata { Name = "Modified", Value = new[] { doc.PackageProperties.Modified.HasValue ? doc.PackageProperties.Modified.ToString() : "" } };
+            metadata.Revision = new Metadata { Name = "Revision", Value = GetValue(doc.PackageProperties.Revision) };
+            metadata.Subject = new Metadata { Name = "Subject", Value = GetValue(doc.PackageProperties.Subject) };
+            metadata.Title = new Metadata { Name = "Title", Value = GetValue(doc.PackageProperties.Title) };
+            metadata.Version = new Metadata { Name = "Version", Value = GetValue(doc.PackageProperties.Version) };
+        }
+
+        private IEnumerable<string> GetValue(string v)
+        {
+            if (String.IsNullOrWhiteSpace(v))
+                return new[] { String.Empty };
+
+            return v.Split(new [] { ", " }, StringSplitOptions.None);
+        }
+
+        public override IEnumerable<Metadata> GetAllMetadata()
+        {
+            return metadata.GetAllMetadata();
+        }
+
+        public override void SetMetadata(Metadata data)
+        {
+            switch (data.Name)
+            {
+                case "Category": metadata.Category.Value = data.Value; break;
+                case "ContentStatus": metadata.ContentStatus.Value = data.Value; break;
+                case "ContentType": metadata.ContentType.Value = data.Value; break;
+                case "Created": metadata.Created.Value = data.Value; break;
+                case "Creator": metadata.Creator.Value = data.Value; break;
+                case "Description": metadata.Description.Value = data.Value; break;
+                case "Identifier": metadata.Identifier.Value = data.Value; break;
+                case "Keywords": metadata.Keywords.Value = data.Value; break;
+                case "Language": metadata.Language.Value = data.Value; break;
+                case "LastModifiedBy": metadata.LastModifiedBy.Value = data.Value; break;
+                case "LastPrinted": metadata.LastPrinted.Value = data.Value; break;
+                case "Modified": metadata.Modified.Value = data.Value; break;
+                case "Revision": metadata.Revision.Value = data.Value; break;
+                case "Subject": metadata.Subject.Value = data.Value; break;
+                case "Title": metadata.Title.Value = data.Value; break;
+                case "Version": metadata.Version.Value = data.Value; break;
+            }
+        }
+
+        public class DocxMetadata
+        {
+            public Metadata Category;
+            public Metadata ContentStatus;
+            public Metadata ContentType;
+            public Metadata Created;
+            public Metadata Creator;
+            public Metadata Description;
+            public Metadata Identifier;
+            public Metadata Keywords;
+            public Metadata Language;
+            public Metadata LastModifiedBy;
+            public Metadata LastPrinted;
+            public Metadata Modified;
+            public Metadata Revision;
+            public Metadata Subject;
+            public Metadata Title;
+            public Metadata Version;
+
+            public IEnumerable<Metadata> GetAllMetadata()
+            {
+                yield return Category;
+                yield return ContentStatus;
+                yield return ContentType;
+                yield return Created;
+                yield return Creator;
+                yield return Description;
+                yield return Identifier;
+                yield return Keywords;
+                yield return Language;
+                yield return LastModifiedBy;
+                yield return LastPrinted;
+                yield return Modified;
+                yield return Revision;
+                yield return Subject;
+                yield return Title;
+                yield return Version;
+            }
         }
     }
 }

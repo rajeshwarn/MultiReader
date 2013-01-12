@@ -89,5 +89,15 @@ namespace MultiReader.Application.Parsers
             }
             myDocument.Close();
         }
+
+        public override void SetMetadata(Metadata data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override IEnumerable<Metadata> GetAllMetadata()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

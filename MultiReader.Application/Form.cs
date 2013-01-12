@@ -19,10 +19,12 @@ namespace MultiReader.Application
     public partial class Reader : Form
     {
         public IParser parser = null;
+        public IEnumerable<Metadata> metadata;
 
         public Reader()
         {
             InitializeComponent();
+            dataGridView1.CellEndEdit += CellEdited;
         }
 
         private void Reader_Load(object sender, EventArgs e)
@@ -74,6 +76,12 @@ namespace MultiReader.Application
 
                 }
 
+                metadata = parser.GetAllMetadata();
+                foreach (var md in metadata)
+                {
+                    dataGridView1.Rows.Add(md.Name, md.Value.JoinUsing(", "));
+                }
+                
                 label1.Text = ofd.FileName;
                 fileNameLabel2.Text = fInfo.Name.ToString();
                 fileFormatLabel2.Text = fInfo.Extension.ToString();

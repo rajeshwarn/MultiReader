@@ -19,7 +19,8 @@ namespace MultiReader.Application.Parsers
         public abstract string GetFileContent();
         public abstract void SaveFileAs(string fileName, FileType type);
         public abstract IEnumerable<string> GetMetadata(MetadataType type);
-        //public abstract IEnumerable<Metadata> GetAllMetadata();
+        public abstract IEnumerable<Metadata> GetAllMetadata();
+        public abstract void SetMetadata(Metadata data);
         public abstract void SetMetadata(MetadataType type, IEnumerable<string> value);
 
     }

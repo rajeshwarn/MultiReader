@@ -6,6 +6,7 @@ using MultiReader.Application.Parsers;
 using MultiReader.Application.Files;
 using MultiReader.Application.Helpers;
 using System.Windows.Forms;
+using MultiReader.Application.Models;
 
 namespace MultiReader.Application
 {
@@ -59,6 +60,17 @@ namespace MultiReader.Application
             tbTitle.Text = String.Join(", ", parser.GetMetadata(MetadataType.Title));
             tbTranslator.Text = String.Join(", ", parser.GetMetadata(MetadataType.Translator));
             tbPublisher.Text = String.Join(", ", parser.GetMetadata(MetadataType.Publisher));
+        }
+
+        public void CellEdited(object sender, DataGridViewCellEventArgs e)
+        {
+            var data = new Metadata 
+            { 
+                Name = (string)dataGridView1.Rows[e.RowIndex].Cells[0].Value,
+                Value = ((string)dataGridView1.Rows[e.RowIndex].Cells[1].Value).Split(new [] { ", " }, StringSplitOptions.None)
+            };
+
+            parser.SetMetadata(data);
         }
     }
 }

@@ -49,5 +49,15 @@ namespace MultiReader.Application.Parsers
         {
             throw new NotImplementedException("...");
         }
+
+        public override void SetMetadata(Metadata data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override IEnumerable<Metadata> GetAllMetadata()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

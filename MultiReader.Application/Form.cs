@@ -13,6 +13,7 @@ using MultiReader.Application.Parsers;
 using MultiReader.Application.Files;
 using MultiReader.Application.Helpers;
 using MultiReader.Application.Models;
+using MultiReader.Application.Cryptography;
 
 namespace MultiReader.Application
 {
@@ -52,7 +53,16 @@ namespace MultiReader.Application
             {
                 filePath = ofd.FileName;
                 ext = Path.GetExtension(filePath);
-                FileInfo fInfo = new FileInfo(filePath); 
+                FileInfo fInfo = new FileInfo(filePath);
+
+                var crc32 = new CRC32HashProvider();
+                String hash = String.Empty;
+
+                using (FileStream fs = File.Open(filePath, FileMode.Open))
+                    foreach (byte b in crc32.ComputeHash(fs)) 
+                        hash += b.ToString("x2").ToLower();
+
+                lbChecksum.Text = hash;
 
                 switch(ext)
                 {

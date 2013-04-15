@@ -72,6 +72,8 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Metadata = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbChecksum = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -83,7 +85,7 @@
             this.editToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(902, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1115, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -288,7 +290,7 @@
             // fileNameLabel
             // 
             this.fileNameLabel.AutoSize = true;
-            this.fileNameLabel.Location = new System.Drawing.Point(743, 28);
+            this.fileNameLabel.Location = new System.Drawing.Point(743, 30);
             this.fileNameLabel.Name = "fileNameLabel";
             this.fileNameLabel.Size = new System.Drawing.Size(55, 13);
             this.fileNameLabel.TabIndex = 16;
@@ -305,7 +307,7 @@
             // fileFormatLabel
             // 
             this.fileFormatLabel.AutoSize = true;
-            this.fileFormatLabel.Location = new System.Drawing.Point(743, 73);
+            this.fileFormatLabel.Location = new System.Drawing.Point(743, 71);
             this.fileFormatLabel.Name = "fileFormatLabel";
             this.fileFormatLabel.Size = new System.Drawing.Size(58, 13);
             this.fileFormatLabel.TabIndex = 18;
@@ -322,7 +324,7 @@
             // fileSizeLabel
             // 
             this.fileSizeLabel.AutoSize = true;
-            this.fileSizeLabel.Location = new System.Drawing.Point(743, 116);
+            this.fileSizeLabel.Location = new System.Drawing.Point(743, 112);
             this.fileSizeLabel.Name = "fileSizeLabel";
             this.fileSizeLabel.Size = new System.Drawing.Size(63, 13);
             this.fileSizeLabel.TabIndex = 20;
@@ -339,7 +341,7 @@
             // creationTimeLabel
             // 
             this.creationTimeLabel.AutoSize = true;
-            this.creationTimeLabel.Location = new System.Drawing.Point(743, 155);
+            this.creationTimeLabel.Location = new System.Drawing.Point(743, 153);
             this.creationTimeLabel.Name = "creationTimeLabel";
             this.creationTimeLabel.Size = new System.Drawing.Size(71, 13);
             this.creationTimeLabel.TabIndex = 22;
@@ -348,7 +350,7 @@
             // lastAccessTimeLabel
             // 
             this.lastAccessTimeLabel.AutoSize = true;
-            this.lastAccessTimeLabel.Location = new System.Drawing.Point(743, 198);
+            this.lastAccessTimeLabel.Location = new System.Drawing.Point(743, 194);
             this.lastAccessTimeLabel.Name = "lastAccessTimeLabel";
             this.lastAccessTimeLabel.Size = new System.Drawing.Size(67, 13);
             this.lastAccessTimeLabel.TabIndex = 23;
@@ -357,7 +359,7 @@
             // lastWriteTimeLabel
             // 
             this.lastWriteTimeLabel.AutoSize = true;
-            this.lastWriteTimeLabel.Location = new System.Drawing.Point(743, 237);
+            this.lastWriteTimeLabel.Location = new System.Drawing.Point(743, 235);
             this.lastWriteTimeLabel.Name = "lastWriteTimeLabel";
             this.lastWriteTimeLabel.Size = new System.Drawing.Size(55, 13);
             this.lastWriteTimeLabel.TabIndex = 24;
@@ -405,7 +407,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(539, 280);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(351, 231);
+            this.dataGridView1.Size = new System.Drawing.Size(564, 231);
             this.dataGridView1.TabIndex = 29;
             // 
             // Metadata
@@ -415,20 +417,39 @@
             this.Metadata.HeaderText = "Metadata";
             this.Metadata.Name = "Metadata";
             this.Metadata.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Metadata.Width = 120;
+            this.Metadata.Width = 180;
             // 
             // Data
             // 
             this.Data.HeaderText = "Data";
             this.Data.Name = "Data";
             this.Data.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Data.Width = 225;
+            this.Data.Width = 370;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(928, 30);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(78, 13);
+            this.label2.TabIndex = 30;
+            this.label2.Text = "File checksum:";
+            // 
+            // lbChecksum
+            // 
+            this.lbChecksum.AutoSize = true;
+            this.lbChecksum.Location = new System.Drawing.Point(931, 47);
+            this.lbChecksum.Name = "lbChecksum";
+            this.lbChecksum.Size = new System.Drawing.Size(0, 13);
+            this.lbChecksum.TabIndex = 31;
             // 
             // Reader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(902, 613);
+            this.ClientSize = new System.Drawing.Size(1115, 613);
+            this.Controls.Add(this.lbChecksum);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.creationTimeLabel2);
@@ -514,6 +535,8 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Metadata;
         private System.Windows.Forms.DataGridViewTextBoxColumn Data;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbChecksum;
 
     }
 }

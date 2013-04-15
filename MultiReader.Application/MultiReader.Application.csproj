@@ -78,6 +78,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Crypto\CRC32HashProvider.cs" />
     <Compile Include="FormLogic.cs">
       <SubType>Form</SubType>
     </Compile>

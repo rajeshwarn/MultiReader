@@ -45,17 +45,16 @@ namespace MultiReader.Application.Parsers
 
         public override void SaveFileAs(string fileName, FileType type)
         {
-            throw new NotImplementedException("...");
+            File.WriteAllText(fileName, parsedFile.contentText);
         }
 
         public override void SetMetadata(Metadata data)
         {
-            throw new NotImplementedException();
         }
 
         public override IEnumerable<Metadata> GetAllMetadata()
         {
-            throw new NotImplementedException();
+            return new Metadata[0];
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace MultiReader.Application
+namespace MultiReader.Application
 {
     partial class Reader
     {
@@ -43,13 +43,12 @@
             this.ofd = new System.Windows.Forms.OpenFileDialog();
             this.saveFD = new System.Windows.Forms.SaveFileDialog();
             this.label1 = new System.Windows.Forms.Label();
+            this.lbpath = new System.Windows.Forms.Label();
             this.tbFileContent = new System.Windows.Forms.RichTextBox();
             this.authorLabel = new System.Windows.Forms.Label();
             this.tbAuthor = new System.Windows.Forms.TextBox();
             this.titleLabel = new System.Windows.Forms.Label();
             this.tbTitle = new System.Windows.Forms.TextBox();
-            this.translatorLabel = new System.Windows.Forms.Label();
-            this.tbTranslator = new System.Windows.Forms.TextBox();
             this.tbPublisher = new System.Windows.Forms.TextBox();
             this.publisherLabel = new System.Windows.Forms.Label();
             this.dateLabel = new System.Windows.Forms.Label();
@@ -68,7 +67,6 @@
             this.lastTimeWriteLabel2 = new System.Windows.Forms.Label();
             this.lastAccessTimeLabel2 = new System.Windows.Forms.Label();
             this.creationTimeLabel2 = new System.Windows.Forms.Label();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Metadata = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -175,14 +173,6 @@
             // 
             this.ofd.FileName = "openFileDialog1";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 514);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 13);
-            this.label1.TabIndex = 3;
-            // 
             // tbFileContent
             // 
             this.tbFileContent.Location = new System.Drawing.Point(15, 27);
@@ -197,206 +187,223 @@
             this.authorLabel.Location = new System.Drawing.Point(533, 28);
             this.authorLabel.Name = "authorLabel";
             this.authorLabel.Size = new System.Drawing.Size(41, 13);
-            this.authorLabel.TabIndex = 4;
+            this.authorLabel.TabIndex = 3;
             this.authorLabel.Text = "Author:";
             // 
             // tbAuthor
             // 
-            this.tbAuthor.Location = new System.Drawing.Point(536, 45);
+            this.tbAuthor.Location = new System.Drawing.Point(536, 42);
             this.tbAuthor.Name = "tbAuthor";
             this.tbAuthor.Size = new System.Drawing.Size(201, 20);
-            this.tbAuthor.TabIndex = 5;
+            this.tbAuthor.TabIndex = 4;
             // 
             // titleLabel
             // 
             this.titleLabel.AutoSize = true;
-            this.titleLabel.Location = new System.Drawing.Point(536, 73);
+            this.titleLabel.Location = new System.Drawing.Point(533, 65);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(30, 13);
-            this.titleLabel.TabIndex = 6;
+            this.titleLabel.TabIndex = 5;
             this.titleLabel.Text = "Title:";
             // 
             // tbTitle
             // 
-            this.tbTitle.Location = new System.Drawing.Point(536, 89);
+            this.tbTitle.Location = new System.Drawing.Point(536, 81);
             this.tbTitle.Name = "tbTitle";
             this.tbTitle.Size = new System.Drawing.Size(201, 20);
-            this.tbTitle.TabIndex = 7;
-            // 
-            // translatorLabel
-            // 
-            this.translatorLabel.AutoSize = true;
-            this.translatorLabel.Location = new System.Drawing.Point(536, 116);
-            this.translatorLabel.Name = "translatorLabel";
-            this.translatorLabel.Size = new System.Drawing.Size(57, 13);
-            this.translatorLabel.TabIndex = 8;
-            this.translatorLabel.Text = "Translator:";
-            // 
-            // tbTranslator
-            // 
-            this.tbTranslator.Location = new System.Drawing.Point(536, 132);
-            this.tbTranslator.Name = "tbTranslator";
-            this.tbTranslator.Size = new System.Drawing.Size(201, 20);
-            this.tbTranslator.TabIndex = 9;
+            this.tbTitle.TabIndex = 6;
             // 
             // tbPublisher
             // 
-            this.tbPublisher.Location = new System.Drawing.Point(536, 171);
+            this.tbPublisher.Location = new System.Drawing.Point(536, 120);
             this.tbPublisher.Name = "tbPublisher";
             this.tbPublisher.Size = new System.Drawing.Size(201, 20);
-            this.tbPublisher.TabIndex = 10;
+            this.tbPublisher.TabIndex = 7;
             // 
             // publisherLabel
             // 
             this.publisherLabel.AutoSize = true;
-            this.publisherLabel.Location = new System.Drawing.Point(536, 155);
+            this.publisherLabel.Location = new System.Drawing.Point(533, 104);
             this.publisherLabel.Name = "publisherLabel";
             this.publisherLabel.Size = new System.Drawing.Size(50, 13);
-            this.publisherLabel.TabIndex = 11;
+            this.publisherLabel.TabIndex = 8;
             this.publisherLabel.Text = "Publisher";
             // 
             // dateLabel
             // 
             this.dateLabel.AutoSize = true;
-            this.dateLabel.Location = new System.Drawing.Point(536, 198);
+            this.dateLabel.Location = new System.Drawing.Point(533, 143);
             this.dateLabel.Name = "dateLabel";
             this.dateLabel.Size = new System.Drawing.Size(69, 13);
-            this.dateLabel.TabIndex = 12;
+            this.dateLabel.TabIndex = 9;
             this.dateLabel.Text = "Date of pub.:";
             // 
             // tbDateOfPublication
             // 
-            this.tbDateOfPublication.Location = new System.Drawing.Point(536, 214);
+            this.tbDateOfPublication.Location = new System.Drawing.Point(536, 159);
             this.tbDateOfPublication.Name = "tbDateOfPublication";
             this.tbDateOfPublication.Size = new System.Drawing.Size(201, 20);
-            this.tbDateOfPublication.TabIndex = 13;
+            this.tbDateOfPublication.TabIndex = 10;
             // 
             // idLabel
             // 
             this.idLabel.AutoSize = true;
-            this.idLabel.Location = new System.Drawing.Point(536, 237);
+            this.idLabel.Location = new System.Drawing.Point(533, 182);
             this.idLabel.Name = "idLabel";
             this.idLabel.Size = new System.Drawing.Size(49, 13);
-            this.idLabel.TabIndex = 14;
+            this.idLabel.TabIndex = 11;
             this.idLabel.Text = "Book ID:";
             // 
             // tbBookID
             // 
-            this.tbBookID.Location = new System.Drawing.Point(536, 254);
+            this.tbBookID.Location = new System.Drawing.Point(536, 198);
             this.tbBookID.Name = "tbBookID";
             this.tbBookID.Size = new System.Drawing.Size(201, 20);
-            this.tbBookID.TabIndex = 15;
+            this.tbBookID.TabIndex = 12;
             // 
             // fileNameLabel
             // 
             this.fileNameLabel.AutoSize = true;
-            this.fileNameLabel.Location = new System.Drawing.Point(743, 30);
+            this.fileNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.fileNameLabel.Location = new System.Drawing.Point(743, 28);
             this.fileNameLabel.Name = "fileNameLabel";
-            this.fileNameLabel.Size = new System.Drawing.Size(55, 13);
-            this.fileNameLabel.TabIndex = 16;
+            this.fileNameLabel.Size = new System.Drawing.Size(65, 13);
+            this.fileNameLabel.TabIndex = 13;
             this.fileNameLabel.Text = "File name:";
             // 
             // fileNameLabel2
             // 
             this.fileNameLabel2.AutoSize = true;
-            this.fileNameLabel2.Location = new System.Drawing.Point(743, 45);
+            this.fileNameLabel2.Location = new System.Drawing.Point(743, 44);
             this.fileNameLabel2.Name = "fileNameLabel2";
             this.fileNameLabel2.Size = new System.Drawing.Size(0, 13);
-            this.fileNameLabel2.TabIndex = 17;
+            this.fileNameLabel2.TabIndex = 14;
             // 
             // fileFormatLabel
             // 
             this.fileFormatLabel.AutoSize = true;
-            this.fileFormatLabel.Location = new System.Drawing.Point(743, 71);
+            this.fileFormatLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.fileFormatLabel.Location = new System.Drawing.Point(743, 65);
             this.fileFormatLabel.Name = "fileFormatLabel";
-            this.fileFormatLabel.Size = new System.Drawing.Size(58, 13);
-            this.fileFormatLabel.TabIndex = 18;
+            this.fileFormatLabel.Size = new System.Drawing.Size(70, 13);
+            this.fileFormatLabel.TabIndex = 15;
             this.fileFormatLabel.Text = "File format:";
             // 
             // fileFormatLabel2
             // 
             this.fileFormatLabel2.AutoSize = true;
-            this.fileFormatLabel2.Location = new System.Drawing.Point(743, 96);
+            this.fileFormatLabel2.Location = new System.Drawing.Point(743, 81);
             this.fileFormatLabel2.Name = "fileFormatLabel2";
             this.fileFormatLabel2.Size = new System.Drawing.Size(0, 13);
-            this.fileFormatLabel2.TabIndex = 19;
+            this.fileFormatLabel2.TabIndex = 16;
             // 
             // fileSizeLabel
             // 
             this.fileSizeLabel.AutoSize = true;
-            this.fileSizeLabel.Location = new System.Drawing.Point(743, 112);
+            this.fileSizeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.fileSizeLabel.Location = new System.Drawing.Point(743, 104);
             this.fileSizeLabel.Name = "fileSizeLabel";
-            this.fileSizeLabel.Size = new System.Drawing.Size(63, 13);
-            this.fileSizeLabel.TabIndex = 20;
+            this.fileSizeLabel.Size = new System.Drawing.Size(77, 13);
+            this.fileSizeLabel.TabIndex = 17;
             this.fileSizeLabel.Text = "File size [B]:";
             // 
             // fileSizeLabel2
             // 
             this.fileSizeLabel2.AutoSize = true;
-            this.fileSizeLabel2.Location = new System.Drawing.Point(743, 139);
+            this.fileSizeLabel2.Location = new System.Drawing.Point(743, 120);
             this.fileSizeLabel2.Name = "fileSizeLabel2";
             this.fileSizeLabel2.Size = new System.Drawing.Size(0, 13);
-            this.fileSizeLabel2.TabIndex = 21;
+            this.fileSizeLabel2.TabIndex = 18;
             // 
             // creationTimeLabel
             // 
             this.creationTimeLabel.AutoSize = true;
-            this.creationTimeLabel.Location = new System.Drawing.Point(743, 153);
+            this.creationTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.creationTimeLabel.Location = new System.Drawing.Point(743, 143);
             this.creationTimeLabel.Name = "creationTimeLabel";
-            this.creationTimeLabel.Size = new System.Drawing.Size(71, 13);
-            this.creationTimeLabel.TabIndex = 22;
+            this.creationTimeLabel.Size = new System.Drawing.Size(85, 13);
+            this.creationTimeLabel.TabIndex = 19;
             this.creationTimeLabel.Text = "Creation time:";
+            // 
+            // creationTimeLabel2
+            // 
+            this.creationTimeLabel2.AutoSize = true;
+            this.creationTimeLabel2.Location = new System.Drawing.Point(743, 159);
+            this.creationTimeLabel2.Name = "creationTimeLabel2";
+            this.creationTimeLabel2.Size = new System.Drawing.Size(0, 13);
+            this.creationTimeLabel2.TabIndex = 20;
             // 
             // lastAccessTimeLabel
             // 
             this.lastAccessTimeLabel.AutoSize = true;
-            this.lastAccessTimeLabel.Location = new System.Drawing.Point(743, 194);
+            this.lastAccessTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lastAccessTimeLabel.Location = new System.Drawing.Point(743, 182);
             this.lastAccessTimeLabel.Name = "lastAccessTimeLabel";
-            this.lastAccessTimeLabel.Size = new System.Drawing.Size(67, 13);
-            this.lastAccessTimeLabel.TabIndex = 23;
+            this.lastAccessTimeLabel.Size = new System.Drawing.Size(79, 13);
+            this.lastAccessTimeLabel.TabIndex = 21;
             this.lastAccessTimeLabel.Text = "Last access:";
+            // 
+            // lastAccessTimeLabel2
+            // 
+            this.lastAccessTimeLabel2.AutoSize = true;
+            this.lastAccessTimeLabel2.Location = new System.Drawing.Point(743, 198);
+            this.lastAccessTimeLabel2.Name = "lastAccessTimeLabel2";
+            this.lastAccessTimeLabel2.Size = new System.Drawing.Size(0, 13);
+            this.lastAccessTimeLabel2.TabIndex = 22;
             // 
             // lastWriteTimeLabel
             // 
             this.lastWriteTimeLabel.AutoSize = true;
-            this.lastWriteTimeLabel.Location = new System.Drawing.Point(743, 235);
+            this.lastWriteTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lastWriteTimeLabel.Location = new System.Drawing.Point(743, 221);
             this.lastWriteTimeLabel.Name = "lastWriteTimeLabel";
-            this.lastWriteTimeLabel.Size = new System.Drawing.Size(55, 13);
-            this.lastWriteTimeLabel.TabIndex = 24;
+            this.lastWriteTimeLabel.Size = new System.Drawing.Size(66, 13);
+            this.lastWriteTimeLabel.TabIndex = 23;
             this.lastWriteTimeLabel.Text = "Last write:";
             // 
             // lastTimeWriteLabel2
             // 
             this.lastTimeWriteLabel2.AutoSize = true;
-            this.lastTimeWriteLabel2.Location = new System.Drawing.Point(743, 261);
+            this.lastTimeWriteLabel2.Location = new System.Drawing.Point(743, 237);
             this.lastTimeWriteLabel2.Name = "lastTimeWriteLabel2";
             this.lastTimeWriteLabel2.Size = new System.Drawing.Size(0, 13);
-            this.lastTimeWriteLabel2.TabIndex = 25;
+            this.lastTimeWriteLabel2.TabIndex = 24;
             // 
-            // lastAccessTimeLabel2
+            // label2 checksum
             // 
-            this.lastAccessTimeLabel2.AutoSize = true;
-            this.lastAccessTimeLabel2.Location = new System.Drawing.Point(743, 221);
-            this.lastAccessTimeLabel2.Name = "lastAccessTimeLabel2";
-            this.lastAccessTimeLabel2.Size = new System.Drawing.Size(0, 13);
-            this.lastAccessTimeLabel2.TabIndex = 26;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Location = new System.Drawing.Point(533, 221);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(92, 13);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "File checksum:";
             // 
-            // creationTimeLabel2
+            // lbChecksum
             // 
-            this.creationTimeLabel2.AutoSize = true;
-            this.creationTimeLabel2.Location = new System.Drawing.Point(743, 178);
-            this.creationTimeLabel2.Name = "creationTimeLabel2";
-            this.creationTimeLabel2.Size = new System.Drawing.Size(0, 13);
-            this.creationTimeLabel2.TabIndex = 27;
+            this.lbChecksum.AutoSize = true;
+            this.lbChecksum.Location = new System.Drawing.Point(533, 237);
+            this.lbChecksum.Name = "lbChecksum";
+            this.lbChecksum.Size = new System.Drawing.Size(0, 13);
+            this.lbChecksum.TabIndex = 26;
             // 
-            // richTextBox2
+            // label1 path
             // 
-            this.richTextBox2.AcceptsTab = true;
-            this.richTextBox2.Location = new System.Drawing.Point(539, 517);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(351, 84);
-            this.richTextBox2.TabIndex = 28;
-            this.richTextBox2.Text = "";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(533, 253);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(92, 13);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "File path:";
+            // 
+            // label1 path
+            // 
+            this.lbpath.AutoSize = true;
+            this.lbpath.Location = new System.Drawing.Point(533, 269);
+            this.lbpath.Name = "lbpath";
+            this.lbpath.Size = new System.Drawing.Size(0, 13);
+            this.lbpath.TabIndex = 28;
             // 
             // dataGridView1
             // 
@@ -404,10 +411,10 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Metadata,
             this.Data});
-            this.dataGridView1.Location = new System.Drawing.Point(539, 280);
+            this.dataGridView1.Location = new System.Drawing.Point(533, 285);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(564, 231);
+            this.dataGridView1.Size = new System.Drawing.Size(564, 316);
             this.dataGridView1.TabIndex = 29;
             // 
             // Metadata
@@ -426,23 +433,6 @@
             this.Data.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Data.Width = 370;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(928, 30);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 13);
-            this.label2.TabIndex = 30;
-            this.label2.Text = "File checksum:";
-            // 
-            // lbChecksum
-            // 
-            this.lbChecksum.AutoSize = true;
-            this.lbChecksum.Location = new System.Drawing.Point(931, 47);
-            this.lbChecksum.Name = "lbChecksum";
-            this.lbChecksum.Size = new System.Drawing.Size(0, 13);
-            this.lbChecksum.TabIndex = 31;
-            // 
             // Reader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -451,7 +441,6 @@
             this.Controls.Add(this.lbChecksum);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.creationTimeLabel2);
             this.Controls.Add(this.lastAccessTimeLabel2);
             this.Controls.Add(this.lastTimeWriteLabel2);
@@ -470,18 +459,17 @@
             this.Controls.Add(this.dateLabel);
             this.Controls.Add(this.publisherLabel);
             this.Controls.Add(this.tbPublisher);
-            this.Controls.Add(this.tbTranslator);
-            this.Controls.Add(this.translatorLabel);
             this.Controls.Add(this.tbTitle);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.tbAuthor);
             this.Controls.Add(this.authorLabel);
             this.Controls.Add(this.tbFileContent);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbpath);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Reader";
-            this.Text = "Form";
+            this.Text = "MultiReader";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -500,7 +488,6 @@
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog ofd;
         private System.Windows.Forms.SaveFileDialog saveFD;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.RichTextBox tbFileContent;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
@@ -511,8 +498,6 @@
         private System.Windows.Forms.TextBox tbAuthor;
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.TextBox tbTitle;
-        private System.Windows.Forms.Label translatorLabel;
-        private System.Windows.Forms.TextBox tbTranslator;
         private System.Windows.Forms.TextBox tbPublisher;
         private System.Windows.Forms.Label publisherLabel;
         private System.Windows.Forms.Label dateLabel;
@@ -531,13 +516,12 @@
         private System.Windows.Forms.Label lastTimeWriteLabel2;
         private System.Windows.Forms.Label lastAccessTimeLabel2;
         private System.Windows.Forms.Label creationTimeLabel2;
-        private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Metadata;
         private System.Windows.Forms.DataGridViewTextBoxColumn Data;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lbChecksum;
-
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbpath;
     }
 }
-

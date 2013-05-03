@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +18,7 @@ namespace MultiReader.Application
             tbAuthor.Text = parser.GetMetadata(MetadataType.Author).JoinUsing(", ");
             tbTitle.Text = parser.GetMetadata(MetadataType.Title).FirstOrDefault();
             tbPublisher.Text = parser.GetMetadata(MetadataType.Publisher).JoinUsing(", ");
-            tbTranslator.Text = parser.GetMetadata(MetadataType.Translator).JoinUsing(", ");
+            //tbTranslator.Text = parser.GetMetadata(MetadataType.Translator).JoinUsing(", ");
             tbBookID.Text = parser.GetMetadata(MetadataType.BookID).JoinUsing(", ");
             tbDateOfPublication.Text = parser.GetMetadata(MetadataType.PublishDate).FirstOrDefault();
             tbFileContent.Text = parser.GetFileContent();
@@ -58,7 +58,7 @@ namespace MultiReader.Application
             parser.SetMetadata(MetadataType.BookID, "unknown");
             tbAuthor.Text = String.Join(", ", parser.GetMetadata(MetadataType.Author));
             tbTitle.Text = String.Join(", ", parser.GetMetadata(MetadataType.Title));
-            tbTranslator.Text = String.Join(", ", parser.GetMetadata(MetadataType.Translator));
+            //tbTranslator.Text = String.Join(", ", parser.GetMetadata(MetadataType.Translator));
             tbPublisher.Text = String.Join(", ", parser.GetMetadata(MetadataType.Publisher));
         }
 

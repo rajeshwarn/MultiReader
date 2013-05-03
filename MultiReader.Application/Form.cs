@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Diagnostics;
 using System.Collections.Generic;
@@ -92,7 +92,7 @@ namespace MultiReader.Application
                     dataGridView1.Rows.Add(md.Name, md.Value.JoinUsing(", "));
                 }
                 
-                label1.Text = ofd.FileName;
+                lbpath.Text = ofd.FileName;
                 fileNameLabel2.Text = fInfo.Name.ToString();
                 fileFormatLabel2.Text = fInfo.Extension.ToString();
                 fileSizeLabel2.Text = fInfo.Length.ToString();
